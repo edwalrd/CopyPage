@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="container">
+
+    <button class="btn btn-primary" id="btn" onclick="ExportToExcel()">Exportar a Excel</button>
+
+</div>
+
+<script>
+
+
+    function ExportToExcel() {
+
+                  Swal.fire({
+
+                      title: '¿Desea exportar estos registros a excel?',
+                      icon: 'question',
+                      showCancelButton: true,
+                      confirmButtonText: 'Si',
+                      confirmButtonColor: '#2C888C',
+                      cancelButtonText: 'No',
+                      cancelButtonColor: '#d33',
+                  }).then((result) => {
+                      if (result.isConfirmed) {
+
+
+                          $.ajax({
+
+                              cache: false,
+
+                              url: '@Url.Action("ExportToExcel", "Home")',
+
+                              type: "GET",
+
+                              data: {},
+
+                              dataType: 'json',
+
+                              contentType: 'application/json;charset=utf-8',
+
+
+                              success: function (data) {
+
+
+                                  window.location = '@Url.Action("Download", "Home")?fileGuid=' + data.fileGuid + '&filename=' + data.filename;
+
+                                  Swal.fire('El archivo de excel se ha generado con exito','', 'success')
+
+                              }, error: function (response) {
+
+                                  Swal.fire('Ha occurido un error, comunicate con un colaborador!', '', 'error')
+                              },
+
+                              complete: function () {
+
+                                     alert("Termine de toda manera");
+                              }
+
+                          });
+
+
+
+                      } else {
+
+                          alert("NO");
+                      }
+                  })
+
+              }
+
+
+</script>
