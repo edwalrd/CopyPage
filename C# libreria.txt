@@ -36,3 +36,8 @@ github
 
 --https://rogerdudler.github.io/git-guide/
 --https://www.javatpoint.com/git-add
+
+log
+
+--https://www.c-sharpcorner.com/article/add-file-logging-to-an-asp-net-core-mvc-application/
+--https://www.youtube.com/watch?v=8VdS-nKxDkY&ab_channel=gavilanch2
