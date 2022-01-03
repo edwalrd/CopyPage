@@ -30,6 +30,8 @@ httpclient
 
 --https://codetosolutions.com/blog/10/use-refit-library-to-call-rest-api-endpoint-in-c%23-and-asp.net-core
 
+capturar errores --https://www.conradakunga.com/blog/handling-exceptions-with-refit/
+
 
 github
 
@@ -41,3 +43,15 @@ log
 
 --https://www.c-sharpcorner.com/article/add-file-logging-to-an-asp-net-core-mvc-application/
 --https://www.youtube.com/watch?v=8VdS-nKxDkY&ab_channel=gavilanch2
+
+Pdf
+
+la parte de html2pdf
+--https://pspdfkit.com/blog/2019/html-to-pdf-in-javascript/
+
+
+Select all
+
+--http://www.binaryintellect.net/articles/e869963c-fd70-4cb8-bd77-47d621c51408.aspx
+--https://api.jquery.com/checked-selector/
+--https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-get-values-of-selected-checboxes
