@@ -55,3 +55,8 @@ Select all
 --http://www.binaryintellect.net/articles/e869963c-fd70-4cb8-bd77-47d621c51408.aspx
 --https://api.jquery.com/checked-selector/
 --https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-get-values-of-selected-checboxes
+
+
+javascript  librerias
+
+--https://kinsta.com/es/blog/bibliotecas-javascript/
