@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+<div class="row">
+    <input type="text" class="form-control" id="search" name="search" />
+
+</div>
+
+
+<button class="btn btn-danger" onclick="ver()">Ver</button>
+
+@section scripts{
+
+
+<script>
+
+    $(document).ready(function () {
+
+         $("#search").autocomplete({
+
+            source: function (request, response) {
+
+             $.ajax({
+
+                    url: "/Home/GetData",
+                    type: "GET",
+                    dataType: "JSON",
+                    data: { search: request.term }
+
+            , success: function (data) {
+
+                response($.map(data, function (item) {
+
+                    console.log(item);
+
+                    return item;
+                }))
+            },
+
+            error: function (response) {
+
+                alert(response.responseText);
+
+            },
+
+            failure: function (response) {
+
+                alert("failure " + response.responseText);
+
+            }
+
+        });
+
+        },
+
+        select: function (e, i) {
+
+                $("#search").val(i.item.value);
+
+                // Apartir de aqui puede iniciar un formulario
+        },
+        minLength: 1
+    });
+    })
+
+    function ver(){
+
+        if( $("#search").val() == "" ){
+
+               alert("Vacio");
+               $("#search").focus();
+            return false;
+        }
+
+        alert($("#search").val());
+
+
+    }
+
+</script>
+
+    }  
