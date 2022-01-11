@@ -1,0 +1,99 @@
+﻿@model List<SelectAll.Models.Vehicule>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<h3 class="text-center text-black-50">Modulo de Vehiculos</h3>
+
+<div class="container">
+
+    <input class="btn btn-danger" type="button" id="delete" value="Eliminar Vehiculo"  />
+
+    <div class="row">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="checkAll" /></th>
+                    <th scope="col">#</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" class="checkBox"
+                               value="@x.id" />
+                        </td>
+                        <td scope="row">@x.id</td>
+                        <td>@x.Marca</td>
+                        <td>@x.Modelo</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+@section scripts{
+
+<script>
+
+    $(document).ready(function() {
+
+        //Selecionar todos los checkbox
+            $("#checkAll").click(function () {
+
+                $(".checkBox").prop('checked',
+
+                $(this).prop('checked'));
+
+            });
+
+            //Borrar por id todos los items selecionado.
+             $("#delete").click(function () {
+
+                 var selectedIDs = new Array();
+
+                     $('input:checkbox.checkBox').each(function () {
+                            if ($(this).prop('checked')) {
+
+                                selectedIDs.push($(this).val());
+                            }
+                        });
+
+                    if (selectedIDs.length === 0) { alert("Está vacío!"); return false; }
+
+                    var options = {};
+
+                    options.url = "/Home/DeleteAll";
+                    options.type = "GET";
+                    options.data =  $.param({ selectedIDs: selectedIDs}, true) ;
+                    options.contentType = "application/json";
+                    options.dataType = "JSON";
+                    options.success = function (msg) {
+
+                        alert(msg.data);
+
+                    };
+                    options.error = function () {
+                        alert("Error while deleting the records!");
+                    };
+                    $.ajax(options);
+
+            });
+
+     });
+
+</script>
+}
