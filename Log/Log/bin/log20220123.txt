@@ -1,0 +1,34 @@
+2022-01-23 01:28:09.801 -04:00 [INF] User profile is available. Using 'C:\Users\EDWALRD\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-23 01:28:09.990 -04:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-23 01:28:09.990 -04:00 [INF] Hosting environment: Development
+2022-01-23 01:28:09.990 -04:00 [INF] Content root path: C:\Users\EDWALRD\source\repos\Log\Log
+2022-01-23 01:28:10.017 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/ - -
+2022-01-23 01:28:10.053 -04:00 [INF] Executing endpoint 'Log.Controllers.HomeController.Index (Log)'
+2022-01-23 01:28:10.083 -04:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Log.Controllers.HomeController (Log).
+2022-01-23 01:28:10.089 -04:00 [INF] HomeController: 23/01/2022 01:28:10 
+ 
+  Se ha iniciado esta Vista. 
+ 
+
+2022-01-23 01:28:10.105 -04:00 [INF] Executing ViewResult, running view Index.
+2022-01-23 01:28:10.246 -04:00 [INF] Executed ViewResult - view Index executed in 145.3188ms.
+2022-01-23 01:28:10.253 -04:00 [INF] Executed action Log.Controllers.HomeController.Index (Log) in 169.1224ms
+2022-01-23 01:28:10.253 -04:00 [INF] Executed endpoint 'Log.Controllers.HomeController.Index (Log)'
+2022-01-23 01:28:10.281 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/ - - - 200 - text/html;+charset=utf-8 265.6437ms
+2022-01-23 01:28:10.305 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-01-23 01:28:10.305 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/css/site.css - -
+2022-01-23 01:28:10.305 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/lib/jquery/dist/jquery.min.js - -
+2022-01-23 01:28:10.316 -04:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2022-01-23 01:28:10.316 -04:00 [INF] The file /css/site.css was not modified
+2022-01-23 01:28:10.316 -04:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2022-01-23 01:28:10.318 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/lib/jquery/dist/jquery.min.js - - - 304 - application/javascript 12.7885ms
+2022-01-23 01:28:10.318 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/lib/bootstrap/dist/css/bootstrap.min.css - - - 304 - text/css 12.7885ms
+2022-01-23 01:28:10.318 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/css/site.css - - - 304 - text/css 12.7888ms
+2022-01-23 01:28:10.333 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-01-23 01:28:10.333 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-01-23 01:28:10.333 -04:00 [INF] The file /js/site.js was not modified
+2022-01-23 01:28:10.333 -04:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2022-01-23 01:28:10.333 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 304 - application/javascript 0.4159ms
+2022-01-23 01:28:10.333 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 304 - application/javascript 0.4160ms
+2022-01-23 01:28:10.337 -04:00 [INF] Request starting HTTP/2 GET https://localhost:44362/_framework/aspnetcore-browser-refresh.js - -
+2022-01-23 01:28:10.340 -04:00 [INF] Request finished HTTP/2 GET https://localhost:44362/_framework/aspnetcore-browser-refresh.js - - - 200 11937 application/javascript;+charset=utf-8 3.4604ms
