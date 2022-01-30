@@ -60,3 +60,8 @@ Select all
 javascript  librerias
 
 --https://kinsta.com/es/blog/bibliotecas-javascript/
+
+//Form
+
+--https://gist.github.com/tanveery/94260e1eeace704797f7
+--https://www.freecodespot.com/blog/ajax-model-validation-in-asp-net/
