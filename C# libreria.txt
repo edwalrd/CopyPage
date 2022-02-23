@@ -65,3 +65,125 @@ javascript  librerias
 
 --https://gist.github.com/tanveery/94260e1eeace704797f7
 --https://www.freecodespot.com/blog/ajax-model-validation-in-asp-net/
+
+
+
+
+Ejemplo datapicker
+
+
+
+
+
+
+<input id="datetimepicker1" autocomplete="off" type="text" ">
+<input id="datetimepicker2" autocomplete="off" type="text">
+
+<button class="btn btn-primary" onclick="ver();">ver</button>
+@section scripts{
+
+<script>
+
+       $.datetimepicker.setLocale('es');
+       $.datetimepicker.setDateFormatter('moment');
+
+      $(document).ready(function() {
+
+             $.datetimepicker.setDateFormatter('moment');
+     $.datetimepicker.setLocale('es');
+
+    $('#datetimepicker1').datetimepicker({
+
+    format: 'DD-MM-YYYY HH:mm',
+         mask: true
+    });
+
+
+    $('#datetimepicker2').datetimepicker({
+
+        format: 'DD-MM-YYYY HH:mm',
+          mask: true
+    });
+
+        });
+
+
+       ver = () =>{
+
+           var fechaInicio =  $('#datetimepicker1').val();
+           var fechaFinal =  $('#datetimepicker2').val();
+
+           console.log(fechaInicio);
+           console.log(fechaFinal);
+
+         if(fechaInicio > fechaFinal){
+
+        console.log("La fecha final debe ser mayor a la fecha inicial");
+
+
+       }else{
+
+                       $.ajax({
+                              cache: false,
+                              url: '@Url.Action("Ver", "Home")',
+                              type: "GET",
+                              data: {fechaInicio:fechaInicio},
+                              dataType: 'json',
+                              contentType: 'application/json;charset=utf-8',
+                              success: function (data) {
+
+                                  console.log();
+
+                              }, error: function (response) {
+
+                                  console.log();
+                              },
+                              complete: function () {
+                                      console.log("Termine de toda manera");
+                              }
+                          });
+
+
+         }
+
+
+       }
+
+</script>
+}
+
+  [HttpGet]
+        public IActionResult Ver(string fechaInicio)
+        {
+
+
+          var date = Convert.ToDateTime(fechaInicio).ToString("yyyy-MM-dd HH:mm");
+
+
+            return View();
+        }
+        
+        
+        
+            <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - fecha - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.full.js"></script>
+    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.js"></script>
+    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/moment.js/moment.js"></script>
+    <script src="~/lib/moment.js/moment.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/jquery-datetimepicker/jquery.datetimepicker.css" />
+    <link rel="stylesheet" href="~/lib/jquery-datetimepicker/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
