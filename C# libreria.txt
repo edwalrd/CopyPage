@@ -116,7 +116,7 @@ Ejemplo datapicker
            console.log(fechaInicio);
            console.log(fechaFinal);
 
-         if(fechaInicio > fechaFinal){
+      if(moment(fechaInicio,"DD-MM-YYYY HH:mm" ) >= moment(fechaFinal , "DD-MM-YYYY HH:mm")){
 
         console.log("La fecha final debe ser mayor a la fecha inicial");
 
