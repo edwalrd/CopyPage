@@ -66,124 +66,106 @@ javascript  librerias
 --https://gist.github.com/tanveery/94260e1eeace704797f7
 --https://www.freecodespot.com/blog/ajax-model-validation-in-asp-net/
 
+Controller
+ public IActionResult Index()
+        {
+            ViewData["valor1"] = "";
+            ViewData["valor2"] = "";
+            var persona = new List<Persona>();
+
+            return View(persona.ToList());
+        }
+
+        [HttpPost]
+        public IActionResult Index(string valor1 = "", string valor2 = "")
+        {
+            var persona = new List<Persona>();
+
+            ViewData["valor1"] = string.IsNullOrEmpty(valor1) ? "" : valor1;
+            ViewData["valor2"] = string.IsNullOrEmpty(valor2) ? "" : valor2;
+
+            for (int i = 0; i < 10; i++)
+            {
+                persona.Add(new Persona { Name = "Name", LastName = "LastName" });
+            }
+
+            return View(persona);
+        }
 
 
+---View
 
-Ejemplo datapicker
+@model List<WebApplication1.Models.Persona>
+@{
+    ViewData["Title"] = "Home Page";
+    
+}
 
+<form asp-controller="Home" asp-action="Index" method="post">
+    <p>
+        Title: <input type="text" id="valor1" name="valor1" value="@ViewData["valor1"].ToString()" placeholder="000-0000-000-0" data-mask="000-0000-000-0" />
+        Title: <input type="text" id="valor2" name="valor2" value="@ViewData["valor2"].ToString()"  placeholder="dd/mm/yyyy" data-mask="00/00/0000" />
+        <input type="submit" id="btnSubmit" value="Filter" />
+    </p>
+</form>
 
+@foreach (var item in Model)
+{
+    <p>@item.LastName</p> <p>@item.Name</p>
 
+}
 
-
-
-<input id="datetimepicker1" autocomplete="off" type="text" ">
-<input id="datetimepicker2" autocomplete="off" type="text">
-
-<button class="btn btn-primary" onclick="ver();">ver</button>
-@section scripts{
-
+@section scripts
+{
 <script>
 
-       $.datetimepicker.setLocale('es');
-       $.datetimepicker.setDateFormatter('moment');
+        $(document).ready(function() {
 
-      $(document).ready(function() {
-
-             $.datetimepicker.setDateFormatter('moment');
-     $.datetimepicker.setLocale('es');
-
-    $('#datetimepicker1').datetimepicker({
-
-    format: 'DD-MM-YYYY HH:mm',
-         mask: true
+            $("valor1").mask('000-0000-000-0');
+            $("valor2").mask('00/00/0000');
     });
 
+     $("#btnSubmit").click(function(){
 
-    $('#datetimepicker2').datetimepicker({
-
-        format: 'DD-MM-YYYY HH:mm',
-          mask: true
-    });
-
-        });
+         var campo1  = $("#valor1").val() ;
+         var campo2  = $("#valor2").val() ;
 
 
-       ver = () =>{
-
-           var fechaInicio =  $('#datetimepicker1').val();
-           var fechaFinal =  $('#datetimepicker2').val();
-
-           console.log(fechaInicio);
-           console.log(fechaFinal);
-
-      if(moment(fechaInicio,"DD-MM-YYYY HH:mm" ) >= moment(fechaFinal , "DD-MM-YYYY HH:mm")){
-
-        console.log("La fecha final debe ser mayor a la fecha inicial");
-
-
-       }else{
-
-                       $.ajax({
-                              cache: false,
-                              url: '@Url.Action("Ver", "Home")',
-                              type: "GET",
-                              data: {fechaInicio:fechaInicio},
-                              dataType: 'json',
-                              contentType: 'application/json;charset=utf-8',
-                              success: function (data) {
-
-                                  console.log();
-
-                              }, error: function (response) {
-
-                                  console.log();
-                              },
-                              complete: function () {
-                                      console.log("Termine de toda manera");
-                              }
-                          });
-
+         if(campo1 == "" && campo2 == ""){
+             return false;
+         }
+         if(campo1.length < 14 && campo2.length < 10 ){
+              return false;
 
          }
+         if(campo1.length != 14 && campo1.length != 0  )
+         {
+             return false;
+         }
+            if(campo2.length != 10 && campo2.length != 0  )
+         {
+             return false;
+         }
+       
+
+         return true;
+
+         //if( campo === ""  ||  campo == null || campo.length < 14){
+
+         //    return false;
+         //}else{
+         //   return true;
+         //}
 
 
-       }
+
+
+    });
 
 </script>
 }
 
-  [HttpGet]
-        public IActionResult Ver(string fechaInicio)
-        {
 
-
-          var date = Convert.ToDateTime(fechaInicio).ToString("yyyy-MM-dd HH:mm");
-
-
-            return View();
-        }
-        
-        
-        
-            <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - fecha - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.full.js"></script>
-    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.js"></script>
-    <script src="~/lib/jquery-datetimepicker/jquery.datetimepicker.min.js"></script>
+   <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/moment.js/moment.js"></script>
-    <script src="~/lib/moment.js/moment.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
-
-
-  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/jquery-datetimepicker/jquery.datetimepicker.css" />
-    <link rel="stylesheet" href="~/lib/jquery-datetimepicker/jquery.datetimepicker.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery.mask/jquery.mask.js"></script> 
